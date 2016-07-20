@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar Quiz</title>
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Grammar Quiz</h1>
+    </div>
+    <div class="container">
+            <h1 class="topic">Topic</h1>
+            <p class="description">Description</p>
+            <section class="answers">
+                <p class="directions">Directions</p>
+                <p class="error"></p>
+                <form>
+                    <ul class="answer-list">
+                        <li class="answer"><input type="radio" name="answer" value="0"> <span class="answer-text">AnswerText0</span></li>
+                        <li class="answer"><input type="radio" name="answer" value="1"> <span class="answer-text">AnswerText1</span></li>
+                        <li class="answer"><input type="radio" name="answer" value="2"> <span class="answer-text">AnswerText2</span></li>
+                        <li class="answer"><input type="radio" name="answer" value="3"> <span class="answer-text">AnswerText3</span></li>
+                    </ul>
+                    <input type="submit" value="Next >">
+                </form>
+            </section>
+            <section class="question-results">
+                <h3 class="result"></h3>
+                <p>You've correctly answered <span class="num-right"></span> out of <span class="total"></span> questions</p>
+                <input type="submit" value="Next >">
+                <p class="quiz-over">Quiz Over.  Thanks for participating!</p>
+            </section>
+    </div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

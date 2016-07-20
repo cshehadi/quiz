@@ -1,0 +1,33 @@
+.header {
+    text-align: center;
+    border-bottom: thin solid #999;
+}
+
+.topic, .description {
+    text-align: center;
+}
+.container {
+    width: 840px;
+    margin: 0 auto;
+}
+.directions {
+    font-style: italic;
+    font-size: .9em;
+}
+.error {
+    color: red;
+    display: none;
+}
+input[type=submit] {
+    float: right;
+}
+.answers ul {
+    list-style: none;
+    padding-left: 0px;
+}
+.answer {
+    margin-bottom: 12px;
+}
+.quiz-over, .question-results {
+    display: none;
+}
