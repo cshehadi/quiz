@@ -137,9 +137,9 @@ $(document).ready(function() {
         if (result == 'Wrong!') {
             $('.correct-answer-text').html('The correct answer is ' + question.answers[question.correct_idx]);
             // give an explanation for the result, if there is one
-            if (question_data[current_question].explanation.length) {
-                $('.explanation').html(question_data[current_question].explanation);
-            }
+//            if (question_data[current_question].explanation.length) {
+//                $('.explanation').html(question_data[current_question].explanation);
+//            }
             $('.correct-answer').show();
         } else {
             $('.correct-answer').hide();
