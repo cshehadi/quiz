@@ -177,6 +177,10 @@ $(document).ready(function() {
 
     function newGame() {
 
+        // reset global vars
+        current_question = 0;
+        score = 0;
+        
         // hide all screens
         clearBoard();
 
