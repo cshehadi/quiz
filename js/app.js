@@ -9,20 +9,70 @@ $(document).ready(function() {
 
     var question_data = [
         {
-            topic: 'topic1',
-            description: 'description1',
-            directions: 'directions1',
-            question: 'question1',
-            answers: ['1-answer1','1-answer2','1-answer3','1-answer4'],
+            topic: 'Complete Sentences',
+            description: "Every sentence must have a subject and verb. A subject is always a noun or a pronoun. The subject is like the “actor” of a sentence. The verb is the “action” performed by the actor, or the “state of being” of the actor.",
+            directions: 'Only one of these is a complete sentence.  Which one is it?',
+            answers: [
+                    "While you are in the library.",
+                    "John Smith lies.",
+                    "If you suddenly turn into a cockroach in the middle of the night, for no apparent reason, and you have trouble just climbing out of bed and nothing looks the way you remember it and you don’t know what to do next.",
+                    "Where there is smoke."
+                    ],
+            explanation: "",
+            correct_idx: 1
+        },
+        {
+            topic: 'Run-on Sentences',
+            description: 'When you run two sentences together without proper punctuation—a semicolon or the comma/conjunction combination—you have a run-on sentence.',
+            directions: 'Which sentence is <b>not</b> a run-on sentence?',
+            answers: [
+                    "The summer was hot and dry, causing the farmers to lose much of their crop.",
+                    "I don’t know how this watch is put together, however I will try to fix it.",
+                    "There was a long line at the restaurant, we headed elsewhere.",
+                    "All their children grew up and went away the house suddenly seemed strange and overly large."
+                    ],
+            explanation: "",
+            correct_idx: 0
+        },
+        {
+            topic: 'Noun/Pronoun Agreement',
+            description: 'Pronouns must agree with any related nouns or pronouns that precede them. The noun or pronoun that precedes a pronoun is the antecedent. Pronouns should agree with their antecedents in gender and/or singularity and plurality.',
+            directions: 'Only one of these sentences is correct.  Which one is it?',
+            answers: [
+                    "Martina likes to run errands for Bob and myself.",
+                    "Each of the geese return to their home for the season.",
+                    "Some of these people don’t know his or her head from a hole in the ground.",
+                    "No one should fail her grammar quiz."
+                    ],
+            explanation: "<em>No one</em> is singular. It’s acceptable to choose either <em>she</em> or <em>he.</em> But <em>they</em> is becoming somewhat acceptable in these cases, if not perfectly correct.",
+            correct_idx: 3
+        },
+        {
+            topic: 'Subject/Verb Agreement',
+            description: 'Subjects (be they nouns or pronouns) must agree with their verbs. If a subject is singular, the verb must also be singular. If the subject is plural, the verb must also be plural.',
+            directions: 'Only one of these sentences is correct.  Which one is it?',
+            answers: [
+                    "Neither of my high school friends were accepted at Yale.",
+                    "The proper agreement of sentences require a knowledge of subjects and verbs.",
+                    "Near the fire station on Oak Street stand a department store and a barber shop.",
+                    "The president of the firm, in addition to several officers, were attending the convention in the first week of October."
+                    ],
+            explanation: "If you flip the sentence, you’ll see that the subject is <em>a department store and a barber shop.</em>",
             correct_idx: 2
         },
         {
-            topic: 'topic2',
-            description: 'description2',
-            directions: 'directions2',
-            question: 'question2',
-            answers: ['2-answer1','2-answer2','2-answer3','2-answer4'],
-            correct_idx: 3
+            topic: 'Modifier Problems',
+            description: 'Sometimes it’s easy to mistake an adjective for an adverb, or vice versa. Make sure to use the correct type of modifier.',
+            directions: 'Only one of these sentences is correct.  Which one is it?',
+            answers: [
+                    "You must leave the priest alone when he is thinking deep.",
+                    "Being very drunk, the toilet was my best friend.",
+                    "While scrambling to get ready, I forgot to take my keys.",
+                    "After reading Dostoyevsky, existentialism is still unclear.",
+                    "Unable to find a muse, her writing suffered for many years.",
+                    ],
+            explanation: "",
+            correct_idx: 2
         },
     ];
 
@@ -40,7 +90,7 @@ $(document).ready(function() {
 
     function createAnswer(i, answer_text) {
         var out = '<li class="answer"><input type="radio" name="answer" value="'+i+'"> ';
-        out += '<span class="answer-text">'+answer_text+'</span></li>';
+        out += '<label class="answer-text">'+answer_text+'</label></li>';
         return out;
     }
 
@@ -67,7 +117,7 @@ $(document).ready(function() {
                     $('.answer-list').append(createAnswer(i, question[prop][i]));
                 }
             } else { // if not the list of answers, then just populate the elements by class name (question => .question)
-                var elem = $('.'+prop); // construct the class name
+                var elem = $('.'+prop); // construct the selector class name
                 if (elem.length) { // if it exists, then populate it
                     $(elem).html(question[prop]);
                 }
@@ -78,7 +128,24 @@ $(document).ready(function() {
 
     function displayResult(result) {
         // populate results page
+        // right or wrong
         $('.result').html(result);
+
+        var question = new Question(question_data[current_question]);
+
+        // display the correct answer
+        if (result == 'Wrong!') {
+            $('.correct-answer-text').html('The correct answer is ' + question.answers[question.correct_idx]);
+            // give an explanation for the result, if there is one
+            if (question_data[current_question].explanation.length) {
+                $('.explanation').html(question_data[current_question].explanation);
+            }
+            $('.correct-answer').show();
+        } else {
+            $('.correct-answer').hide();
+        }
+
+        // update the score and total so far
         $('.num-right').html(score);
         $('.total').html(current_question + 1);
 

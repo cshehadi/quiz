@@ -1,3 +1,6 @@
+body {
+    font-size: 0.9em;
+}
 .header {
     text-align: center;
     border-bottom: thin solid #999;
@@ -6,13 +9,15 @@
 .topic, .description {
     text-align: center;
 }
+
 .container {
     width: 840px;
     margin: 0 auto;
 }
 .directions {
+    margin-top: 36px;
     font-style: italic;
-    font-size: .9em;
+    font-size: 1em;
 }
 .error {
     color: red;
@@ -27,6 +32,16 @@ input[type=submit] {
 }
 .answer {
     margin-bottom: 12px;
+}
+.answer-text {
+    display: block;
+    margin-left: 24px;
+}
+.correct-answer {
+    display: none;
+}
+input[type=radio] {
+    float: left;
 }
 .quiz-over, .question-results {
     display: none;
